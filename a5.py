@@ -221,10 +221,10 @@ def BFS(state: Board) -> Board:
         either None in the case of invalid input or a solved board
     """
     the_queue = Queue()
-    the_queue.enqueue(state)
+    the_queue.push(state)
 
     while not the_queue.is_empty():
-        current_board: Board = the_queue.dequeue()
+        current_board: Board = the_queue.pop()
 
         if current_board.goal_test():
             return current_board
@@ -236,7 +236,7 @@ def BFS(state: Board) -> Board:
             for val in possible_values:
                 new_board: Board = copy.deepcopy(current_board)
                 new_board.update(row, col, val)
-                the_queue.enqueue(new_board)
+                the_queue.push(new_board)
     return None
 
 
